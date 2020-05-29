@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
-import Tower from './Tower';
-import ButtonTogglePeriod from './ButtonTogglePeriod';
+import React from "react";
+import { useRecoilValue } from "recoil";
+import Tower from "./Tower";
+import ButtonTogglePeriod from "./ButtonTogglePeriod";
+import isNightState from "../state/isNight";
 
 const Scenery = () => {
-  const [isNight, setIsNight] = useState()
-  const toggleIsNight = () => setIsNight(!isNight)
-  const sceneryClass = (isNight) ? "scenery is-night" : "scenery";
-  return(
+  const isNight = useRecoilValue(isNightState);
+  const sceneryClass = isNight ? "scenery is-night" : "scenery";
+  return (
     <div className={sceneryClass}>
       <div className="container">
-        <ButtonTogglePeriod
-          onChangeEvent={ toggleIsNight } />
-        <Tower isNight={ isNight } />
+        <ButtonTogglePeriod />
+        <Tower />
       </div>
       <div className="ground"></div>
     </div>
-  )
-}
+  );
+};
 
-export default Scenery
+export default Scenery;

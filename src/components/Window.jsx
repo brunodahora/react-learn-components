@@ -1,19 +1,19 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import { useRecoilValue } from "recoil";
+import PropTypes from "prop-types";
+import isNightState from "../state/isNight";
 
-const Window = ({ closed, lightOn }) => {
+const Window = ({ closed }) => {
+  const isNight = useRecoilValue(isNightState);
   let classState = "window";
-  if(closed)
-    classState += " closed";
+  if (closed) classState += " closed";
 
-  if(lightOn)
-    classState += " light-on"
+  if (isNight) classState += " light-on";
 
-  return <div className={ classState }></div>
-}
+  return <div className={classState}></div>;
+};
 Window.propTypes = {
   closed: PropTypes.bool,
-  lightOn: PropTypes.bool
-}
+};
 
 export default Window;

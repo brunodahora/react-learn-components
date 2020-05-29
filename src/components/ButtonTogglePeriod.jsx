@@ -1,25 +1,18 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import { useRecoilState } from "recoil";
+import isNightState from "../state/isNight";
 
-import Image from '../day-and-night.png';
+import Image from "../day-and-night.png";
 
-const ButtonTogglePeriod = ({ onChangeEvent }) => {
-  const [active, setActive] = useState();
-  const onChange = () => {
-    setActive(!active)
-    onChangeEvent()
-  }
-  const pos = (active) ? "active" : "";
+const ButtonTogglePeriod = () => {
+  const [isNight, setIsNight] = useRecoilState(isNightState);
+  const onChange = () => setIsNight(!isNight);
+  const pos = isNight ? "active" : "";
   return (
-    <button
-      onClick={onChange}
-      className={ "toggle-button floating " + pos }>
+    <button onClick={onChange} className={"toggle-button floating " + pos}>
       <img src={Image} alt="Toggle day/night" width="32" height="32" />
     </button>
-  )
-}
-ButtonTogglePeriod.propTypes = {
-  onChangeEvent: PropTypes.func,
-}
+  );
+};
 
-export default ButtonTogglePeriod
+export default ButtonTogglePeriod;

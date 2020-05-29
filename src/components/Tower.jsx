@@ -1,19 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Apartment from './Apartment';
+import React from "react";
+import { useRecoilValue } from "recoil";
+import Apartment from "./Apartment";
+import isNightState from "../state/isNight";
 
-const Tower = ({ isNight }) => (
-  <div className="tower">
-    <div className="watter-supply"></div>
-    <Apartment isNight={isNight} />
-    <Apartment isNight={isNight} />
-    <Apartment isNight={isNight} />
-    <Apartment isNight={isNight} />
-    <Apartment isNight={isNight} />
-  </div>
-)
-Tower.propTypes = {
-  isNight: PropTypes.bool
-}
+const Tower = () => {
+  const isNight = useRecoilValue(isNightState);
+  return (
+    <div className="tower">
+      <div className="watter-supply"></div>
+      <Apartment isNight={isNight} />
+      <Apartment isNight={isNight} />
+      <Apartment isNight={isNight} />
+      <Apartment isNight={isNight} />
+      <Apartment isNight={isNight} />
+    </div>
+  );
+};
 
-export default Tower
+export default Tower;
