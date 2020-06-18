@@ -1,0 +1,1 @@
+export const TOGGLE_DAY_NIGHT = "APP.TOGGLE_DAY_NIGHT";
