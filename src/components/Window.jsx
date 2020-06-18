@@ -1,19 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import { useSelector } from "react-redux";
+import PropTypes from "prop-types";
 
-const Window = ({ closed, lightOn }) => {
+import { isNightSelector } from "../store/selectors/AppSelectors";
+
+const Window = ({ closed }) => {
+  const isNight = useSelector(isNightSelector);
   let classState = "window";
-  if(closed)
-    classState += " closed";
+  if (closed) classState += " closed";
 
-  if(lightOn)
-    classState += " light-on"
+  if (isNight) classState += " light-on";
 
-  return <div className={ classState }></div>
-}
+  return <div className={classState}></div>;
+};
 Window.propTypes = {
   closed: PropTypes.bool,
-  lightOn: PropTypes.bool
-}
+};
 
 export default Window;
