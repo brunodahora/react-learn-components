@@ -1,10 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import "./index.css";
 
-import './index.css';
-import Scenery from './components/Scenery';
+import store from "./store";
+import Scenery from "./components/Scenery";
 
-ReactDOM.render(
-  <Scenery/>,
-  document.getElementById('root')
+const App = () => (
+  <Provider store={store}>
+    <Scenery />
+  </Provider>
 );
+
+ReactDOM.render(<App />, document.getElementById("root"));
